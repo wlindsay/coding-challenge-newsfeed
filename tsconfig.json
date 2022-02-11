@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2016",
     "lib": [
       "dom",
       "dom.iterable",
@@ -18,7 +18,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
   },
   "include": [
     "next-env.d.ts",

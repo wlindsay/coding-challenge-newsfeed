@@ -3,19 +3,6 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import type { AppProps } from 'next/app';
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <ApolloProvider client={client}>
-          <Component {...pageProps} />
-        </ApolloProvider>
-      </ThemeProvider>
-    </>
-  );
-}
-
 const client = new ApolloClient({
   uri: '/api/graphql',
   cache: new InMemoryCache()
@@ -72,3 +59,16 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `;
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <ApolloProvider client={client}>
+          <Component {...pageProps} />
+        </ApolloProvider>
+      </ThemeProvider>
+    </>
+  );
+}
