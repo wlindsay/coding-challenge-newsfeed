@@ -1,6 +1,7 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import Layout from 'components/Layout'
+import React from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import Layout from 'components/Layout';
 
 export default function Home() {
   return (
@@ -12,9 +13,13 @@ export default function Home() {
       <p>Your future newsfeed goes to this page. Or not, you decide 🤷</p>
       <span>Check out these pages:</span>
       <ul>
-        <li>Project <Link href="/projects/10">Blue Onion Labs</Link></li>
-        <li>User <Link href="/users/11">Cai Burris</Link></li>
+        <li>
+          Project <Link href="/projects/10">Blue Onion Labs</Link>
+        </li>
+        <li>
+          User <Link href="/users/11">Cai Burris</Link>
+        </li>
       </ul>
     </Layout>
-  )
+  );
 }

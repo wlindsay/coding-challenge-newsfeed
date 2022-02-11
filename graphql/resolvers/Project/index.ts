@@ -1,3 +1,3 @@
-import _users from './users'
+import _users from './users';
 
-export const users = _users
+export const users = _users;
