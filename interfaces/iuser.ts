@@ -14,8 +14,3 @@ export interface IUserRow {
 export interface IUser extends IUserRow {
   projects: IProject[];
 }
-
-export interface IUserArgs {
-  skip: number;
-  take: number;
-}

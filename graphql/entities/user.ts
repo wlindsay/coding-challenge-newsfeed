@@ -17,7 +17,9 @@ export class User implements IUser {
   @Field()
   avatar_url: string;
 
-  @Field(() => String)
+  @Field(() => String, {
+    description: 'One of founders, angels, or writers'
+  })
   fellowship: UserFellowship;
 
   @Field()
