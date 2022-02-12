@@ -16,7 +16,7 @@ export interface IFeed {
   hasMore: boolean;
 }
 
-export type FeedFilter = 'projects' | 'users' | 'announcements';
+export type FeedFilter = 'User' | 'Project' | 'Announcement';
 
 export interface IFeedArgs {
   fellowship: AllFellowship;

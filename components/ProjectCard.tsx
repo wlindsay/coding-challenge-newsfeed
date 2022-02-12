@@ -3,24 +3,20 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Card from './Card';
 import Markdown from './Markdown';
+import { IProject, IUser } from 'interfaces';
 
 type Props = {
   project: Project;
 };
 
-type Project = {
-  id: number;
-  name: string;
-  description: string;
-  icon_url: string;
+export type Project = Pick<
+  IProject,
+  'id' | 'name' | 'description' | 'icon_url'
+> & {
   users: User[];
 };
 
-type User = {
-  id: number;
-  name: string;
-  avatar_url: string;
-};
+type User = Pick<IUser, 'id' | 'name' | 'avatar_url'>;
 
 export default function ProjectCard({ project }: Props) {
   return (
