@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Card from './Card';
 import Markdown from './Markdown';
 import { IProject, IUser } from 'interfaces';
+import CardHeader from './CardHeader';
 
 type Props = {
   user: User;
@@ -26,6 +27,7 @@ export default function UserCard({ user }: Props) {
           <Avatar src={user.avatar_url} />
         </ColumnLeft>
         <ColumnRight>
+          <CardHeader item={user} />
           <h2>{user.name}</h2>
           <p>Fellowship: {user.fellowship}</p>
           <Markdown>{user.bio}</Markdown>

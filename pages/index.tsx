@@ -4,6 +4,7 @@ import Layout from 'components/Layout';
 import { gql, useQuery } from '@apollo/client';
 import FeedComponent, { Feed } from 'components/FeedComponent';
 import { IFeedArgs } from 'interfaces';
+import FellowshipControls from 'components/FellowshipControls';
 
 const FEED_QUERY = gql`
   query feed(
@@ -87,6 +88,17 @@ export default function Home() {
       </Head>
       <h1>Hello there!</h1>
       <p>Check out this awesome newsfeed. Or not, you decide 🤷</p>
+      <FellowshipControls
+        fellowship={feedArgs.fellowship}
+        onChange={fellowship => {
+          setFeed([]);
+          setFeedArgs({
+            ...feedArgs,
+            fellowship,
+            offset: 0
+          });
+        }}
+      />
       {error ? (
         <div>
           <h2>Something went wrong</h2>

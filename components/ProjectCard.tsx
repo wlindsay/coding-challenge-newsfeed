@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Card from './Card';
 import Markdown from './Markdown';
 import { IProject, IUser } from 'interfaces';
+import CardHeader from './CardHeader';
 
 type Props = {
   project: Project;
@@ -26,6 +27,7 @@ export default function ProjectCard({ project }: Props) {
           <Icon src={project.icon_url} />
         </ColumnLeft>
         <ColumnRight>
+          <CardHeader item={project} />
           <h2>{project.name}</h2>
           <Markdown>{project.description}</Markdown>
           {!!project.users.length && (

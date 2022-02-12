@@ -19,7 +19,7 @@ export class FeedService {
         ORDER BY created_ts ${!args.orderDescending ? 'ASC' : 'DESC'}
         LIMIT ${args.limit} OFFSET ${args.offset}
       `,
-      []
+      [] // The feed args are validated so I'm not too worried about injection
     );
   }
 
