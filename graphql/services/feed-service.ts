@@ -50,14 +50,22 @@ export class FeedService {
       return;
     }
     return `
-      SELECT p.*, '' as bio, '' as avatar_url, '' as fellowship, '' as title, '' as body, 'Project' as type
+      SELECT
+        p.id, p.name, p.description, p.icon_url, p.created_ts, p.updated_ts,
+        '' as bio, '' as avatar_url, '' as fellowship,
+        '' as title, '' as body,
+        'Project' as type
       FROM projects p
     `;
   }
 
   private getUserQuery(fellowship: AllFellowship): string | undefined {
     const baseQuery = `
-      SELECT u.*, '' as description, '' as icon_url, '' as title, '' as body, 'User' as type
+      SELECT
+        u.id, u.name, '' as description, '' as icon_url, u.created_ts, u.updated_ts,
+        u.bio, u.avatar_url, u.fellowship,
+        '' as title, '' as body,
+        'User' as type
       FROM users u
     `;
     switch (fellowship) {
@@ -74,7 +82,11 @@ export class FeedService {
 
   private getAnnouncementQuery(fellowship: AllFellowship): string | undefined {
     const baseQuery = `
-      SELECT a.*, '' as name, '' as bio, '' as avatar_url, '' as description, '' as icon_url, 'Announcement' as type
+      SELECT
+        a.id, '' as name, '' as description, '' as icon_urls, a.created_ts, a.updated_ts,
+        '' as bio, '' as avatar_url, a.fellowship,
+        a.title, a.body,
+        'Announcement' as type
       FROM announcements a
     `;
     if (fellowship === 'all') {
