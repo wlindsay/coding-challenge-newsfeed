@@ -1,3 +1,4 @@
+import { FeedType } from './ifeed';
 import { IUser } from './iuser';
 
 export interface IProjectRow {
@@ -5,10 +6,11 @@ export interface IProjectRow {
   name: string;
   description: string;
   icon_url: string;
-  created_ts: Date;
-  updated_ts: Date;
+  created_ts: string;
+  updated_ts: string;
 }
 
 export interface IProject extends IProjectRow {
+  type: FeedType;
   users: IUser[];
 }

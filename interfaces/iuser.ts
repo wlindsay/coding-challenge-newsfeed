@@ -1,4 +1,5 @@
 import { UserFellowship } from './fellowship';
+import { FeedType } from './ifeed';
 import { IProject } from './iproject';
 
 export interface IUserRow {
@@ -7,10 +8,11 @@ export interface IUserRow {
   bio: string;
   avatar_url: string;
   fellowship: UserFellowship;
-  created_ts: Date;
-  updated_ts: Date;
+  created_ts: string;
+  updated_ts: string;
 }
 
 export interface IUser extends IUserRow {
+  type: FeedType;
   projects: IProject[];
 }

@@ -1,4 +1,4 @@
-import { IAnnouncement } from 'interfaces';
+import { FeedType, IAnnouncement } from 'interfaces';
 import { AllFellowship } from 'interfaces/fellowship';
 import { ObjectType, Field, ID } from 'type-graphql';
 
@@ -18,9 +18,12 @@ export class Announcement implements IAnnouncement {
   @Field()
   body: string;
 
-  @Field()
-  created_ts: Date;
+  @Field(() => String)
+  type: FeedType = 'Announcement';
 
   @Field()
-  updated_ts: Date;
+  created_ts: string;
+
+  @Field()
+  updated_ts: string;
 }

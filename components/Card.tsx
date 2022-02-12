@@ -4,6 +4,7 @@ const Card = styled.div`
   padding: 1.5rem;
   border: 1px solid #eaeaea;
   border-radius: 10px;
+  margin: 25px 0;
 `;
 
 export default Card;

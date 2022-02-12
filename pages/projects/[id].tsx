@@ -11,6 +11,7 @@ const PROJECT_QUERY = gql`
       name
       description
       icon_url
+      created_ts
       users {
         id
         name

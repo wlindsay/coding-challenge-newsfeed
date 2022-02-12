@@ -1,4 +1,4 @@
-import { IProject } from 'interfaces';
+import { FeedType, IProject } from 'interfaces';
 import { ObjectType, Field, ID } from 'type-graphql';
 import { User } from './user';
 
@@ -17,10 +17,13 @@ export class Project implements IProject {
   icon_url: string;
 
   @Field()
-  created_ts: Date;
+  created_ts: string;
 
   @Field()
-  updated_ts: Date;
+  updated_ts: string;
+
+  @Field(() => String)
+  type: FeedType = 'Project';
 
   users: User[];
 }

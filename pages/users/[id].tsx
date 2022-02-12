@@ -12,6 +12,7 @@ const USER_QUERY = gql`
       bio
       fellowship
       avatar_url
+      created_ts
       projects {
         id
         name

@@ -1,12 +1,12 @@
 import { FeedArgs } from 'graphql/args/feed-args';
 import db from 'graphql/db';
-import { FeedFilter, FeedRow } from 'interfaces';
+import { FeedType, FeedRow } from 'interfaces';
 import { AllFellowship } from 'interfaces/fellowship';
 import { Service } from 'typedi';
 
 @Service()
 export class FeedService {
-  async find(args: FeedArgs, filter: FeedFilter[]): Promise<FeedRow[]> {
+  async find(args: FeedArgs, filter: FeedType[]): Promise<FeedRow[]> {
     if (filter.length === 0) {
       return [];
     }
@@ -17,14 +17,14 @@ export class FeedService {
           UNION ALL
         `)}
         ORDER BY created_ts ${!args.orderDescending ? 'ASC' : 'DESC'}
-        LIMIT ${args.take} OFFSET ${args.skip}
+        LIMIT ${args.limit} OFFSET ${args.offset}
       `,
       []
     );
   }
 
   private getItemQueries(
-    filter: FeedFilter[],
+    filter: FeedType[],
     fellowship: AllFellowship
   ): string[] {
     const queries = filter.map(f => {

@@ -17,12 +17,12 @@ export class FeedArgs implements IFeedArgs {
 
   @Field(() => Int)
   @Min(0)
-  skip = 0;
+  offset = 0;
 
   @Field(() => Int)
   @Min(1)
   @Max(100)
-  take = 10;
+  limit = 10;
 
   @Field({ nullable: true })
   @IsOptional()

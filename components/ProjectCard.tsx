@@ -11,7 +11,7 @@ type Props = {
 
 export type Project = Pick<
   IProject,
-  'id' | 'name' | 'description' | 'icon_url'
+  'id' | 'name' | 'description' | 'icon_url' | 'created_ts' | 'type'
 > & {
   users: User[];
 };

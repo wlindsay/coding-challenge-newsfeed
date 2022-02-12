@@ -1,4 +1,4 @@
-import { IUser } from 'interfaces';
+import { FeedType, IUser } from 'interfaces';
 import { UserFellowship } from 'interfaces/fellowship';
 import { ObjectType, Field, ID } from 'type-graphql';
 import { Project } from './project';
@@ -23,10 +23,13 @@ export class User implements IUser {
   fellowship: UserFellowship;
 
   @Field()
-  created_ts: Date;
+  created_ts: string;
 
   @Field()
-  updated_ts: Date;
+  updated_ts: string;
+
+  @Field(() => String)
+  type: FeedType = 'User';
 
   projects: Project[];
 }

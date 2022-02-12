@@ -8,19 +8,15 @@ interface IFeedRow {
   type: 'Project' | 'User' | 'Announcement';
 }
 
-export type FeedRow = (IUser | IProject | IAnnouncement) & IFeedRow;
+export type FeedRow = IUser | IProject | IAnnouncement;
 
-export interface IFeed {
-  items: (IUser | IProject | IAnnouncement)[];
-  count: number;
-  hasMore: boolean;
-}
+export type IFeed = (IUser | IProject | IAnnouncement)[];
 
-export type FeedFilter = 'User' | 'Project' | 'Announcement';
+export type FeedType = 'User' | 'Project' | 'Announcement';
 
 export interface IFeedArgs {
   fellowship: AllFellowship;
-  skip: number;
-  take: number;
+  offset: number;
+  limit: number;
   orderDescending?: boolean;
 }

@@ -3,7 +3,7 @@ import { Announcement } from 'graphql/entities/announcement';
 import { Project } from 'graphql/entities/project';
 import { User } from 'graphql/entities/user';
 import { FeedService } from 'graphql/services/feed-service';
-import { FeedFilter, FeedRow } from 'interfaces';
+import { FeedType } from 'interfaces';
 import { Args, createUnionType, Info, Query, Resolver } from 'type-graphql';
 import { Service } from 'typedi';
 
@@ -11,8 +11,7 @@ const FeedResultUnion = createUnionType({
   name: 'FeedResult',
   types: () => [Project, User, Announcement] as const,
   resolveType: value => {
-    const v = value as FeedRow;
-    switch (v.type) {
+    switch (value.type) {
       case 'Project':
         return Project;
       case 'User':
@@ -55,13 +54,18 @@ export class FeedResolver {
     return this.feedService.find(args, filter);
   }
 
-  private getFilter(info: IInfo): FeedFilter[] {
+  private getFilter(info: IInfo): FeedType[] {
     if (!info.fieldNodes[0]) {
       return [];
     }
 
-    return info.fieldNodes[0].selectionSet.selections.map(s => {
-      return s.typeCondition.name.value as FeedFilter;
-    });
+    return info.fieldNodes[0].selectionSet.selections
+      .map(s => {
+        if (!s.typeCondition) {
+          return;
+        }
+        return s.typeCondition.name.value;
+      })
+      .filter(x => x) as FeedType[];
   }
 }
